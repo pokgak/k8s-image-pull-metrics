@@ -186,10 +186,7 @@ func handleAddFunc(obj interface{}) {
 		commonAttributes := []attribute.KeyValue{
 			attribute.Int64("observed.timestamp", event.LastTimestamp.UnixMilli()),
 			attribute.String("exported.namespace", event.Namespace),
-			attribute.String("exported.pod.name", event.InvolvedObject.Name),
-			attribute.String("exported.container.name", event.InvolvedObject.Name),
 			attribute.String("exported.pod.image", imageName),
-			attribute.Int64("exported.pod.image.size", imageSizeInt),
 			attribute.String("exported.host", event.Source.Host),
 		}
 
