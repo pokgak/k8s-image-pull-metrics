@@ -13,3 +13,11 @@ $ docker buildx build --push
 ```
 kubectl apply -f k8s/
 ```
+
+## Exposed Metrics
+
+name (unit)
+
+- `k8s_image_pull_duration` (ms)
+- `k8s_image_pull_wait_only_duration` (ms)
+- `k8s_image_size` (bytes)
