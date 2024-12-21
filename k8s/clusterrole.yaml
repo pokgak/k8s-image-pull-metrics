@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: k8s-image-pull-metrics
+rules:
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["list", "get", "watch"]

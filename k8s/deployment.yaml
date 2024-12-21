@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-image-pull-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-image-pull-metrics
+  template:
+    metadata:
+      labels:
+        app: k8s-image-pull-metrics
+    spec:
+      serviceAccountName: k8s-image-pull-metrics
+      priorityClassName: system-cluster-critical
+      containers:
+      - name: k8s-image-pull-metrics
+        image: docker.io/k8s-image-pull-metrics:latest
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        env:
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: "http://collector.monitoring.svc.cluster.local:4318"
